@@ -32,8 +32,31 @@ def get_contraintes(horaires, list_options):
     return None
 
 
+def regroupe(etudiants, option):
+    """Génère les listes d'étudiants inscrits dans chaque groupe pour une option donnée.
 
-def compte(etudiants, option):
+    Parameters
+    ----------
+    etudiants   dict
+        Un dictionnaire ayant pour clés les numéros d'étudiants et pour valeurs les listes de groupes auxquels ils
+        sont inscrits
+    option  str
+        Une chaîne de caractère indiquant le cours pour lequel on veut faire des listes d'étudiants
+
+    Returns
+    -------
+    dict
+        Un dictionaire ayant pour clés les identifiants de groupes et pour valeurs les listes de numéro d'étudiants
+        inscrits dans les groupes
+
+    Examples
+    --------
+    >>> etudiants = {"21600000": ["BDD1", "TEL2"], "21600001": ["BDD3", "TEL2"]}
+    >>> regroupe(etudiants, "BDD")
+    {"BDD1": ["21600000"], "BDD3": ["21600001"]}
+    >>> regroupe(etudiants, "TEL")
+    {"TEL2": ["21600000", "21600001"]}
+    """
     listes = {}
     for numetu, list_groups in etudiants.items():
         for gr in list_groups:
@@ -66,7 +89,7 @@ def equilibrage(etudiants, horaires):
     for option in ["BDD", "TEL", "ENT"]:
         has_moved = True
         while has_moved:
-            listes = compte(etudiants, option)
+            listes = regroupe(etudiants, option)
             tailles = {k: len(v) for k, v in listes.items()}
             argmin_taille, min_taille = dict_argmin(tailles)
             argmax_taille, max_taille = dict_argmax(tailles)
@@ -80,5 +103,5 @@ def equilibrage(etudiants, horaires):
                         etudiants[numetu] = [gr for gr in list_groupes if gr != argmax_taille] + [argmin_taille]
                         has_moved = True
                         break
-        print("Après équilibrage : %s" % str({k: len(v) for k, v in compte(etudiants, option).items()}))
+        print("Après équilibrage : %s" % str({k: len(v) for k, v in regroupe(etudiants, option).items()}))
     return etudiants

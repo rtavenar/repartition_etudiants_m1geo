@@ -28,5 +28,5 @@ etudiants_dans_les_groupes = equilibrage(etudiants_dans_les_groupes, horaires)
 
 # Etape 5 : Ecrire les groupes dans un fichier
 fp = open("data/groupes_equilibres.csv", "w")
-for numetu, list_groupes in etudiants.items():
+for numetu, list_groupes in etudiants_dans_les_groupes.items():
     fp.write(numetu + ";" + ";".join(list_groupes) + "\n")
