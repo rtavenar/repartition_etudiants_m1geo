@@ -1,5 +1,5 @@
 import csv
-import numpy
+import random
 
 from utils import get_contraintes, equilibrage
 
@@ -15,7 +15,7 @@ etudiants = {}
 for row in csv.reader(open("data/input_data.csv", "r"), delimiter=";"):
     etudiants[row[0]] = row[1:]
 
-numpy.random.seed(0)  # Uniquement pour pouvoir faire tourner plusieurs fois et obtenir les mêmes groupes
+random.seed(0)  # Uniquement pour pouvoir faire tourner plusieurs fois et obtenir les mêmes groupes
 
 # Etape 3 : créer des groupes (potentiellement déséquilibrés)
 etudiants_dans_les_groupes = {}

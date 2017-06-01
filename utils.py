@@ -1,4 +1,4 @@
-import numpy
+import random
 
 __author__ = 'Romain Tavenard romain.tavenard[at]univ-rennes2.fr'
 
@@ -7,7 +7,7 @@ def get_list_groupes(option, contraintes, horaires, list_options):
     if option not in list_options:
         return ["NO_%s" % option]
     groupes_existants = [k for k in horaires.keys() if k.startswith(option)]
-    numpy.random.shuffle(groupes_existants)
+    random.shuffle(groupes_existants)
     groupes_possibles = []
     for gr in groupes_existants:
         if horaires[gr] not in contraintes.keys():
@@ -45,18 +45,18 @@ def compte(etudiants, option):
 
 
 def dict_argmin(d):
-    minval, argmin = numpy.inf, None
+    minval, argmin = max(d.values()), None
     for k, v in d.items():
-        if v < minval:
+        if v <= minval:
             argmin = k
             minval = v
     return argmin, minval
 
 
 def dict_argmax(d):
-    maxval, argmax = -numpy.inf, None
+    maxval, argmax = min(d.values()), None
     for k, v in d.items():
-        if v > maxval:
+        if v >= maxval:
             argmax = k
             maxval = v
     return argmax, maxval
