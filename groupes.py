@@ -1,7 +1,7 @@
 import csv
 import random
 
-from utils import get_contraintes, equilibrage
+from utils import affecte, equilibrage
 
 __author__ = 'Romain Tavenard romain.tavenard[at]univ-rennes2.fr'
 
@@ -20,7 +20,7 @@ random.seed(0)  # Uniquement pour pouvoir faire tourner plusieurs fois et obteni
 # Etape 3 : créer des groupes (potentiellement déséquilibrés)
 etudiants_dans_les_groupes = {}
 for numetu, list_options in etudiants.items():
-    contraintes = get_contraintes(horaires, list_options)
+    contraintes = affecte(horaires, list_options)
     etudiants_dans_les_groupes[numetu] = list(contraintes.values())
 
 # Etape 4 : équilibrer les groupes

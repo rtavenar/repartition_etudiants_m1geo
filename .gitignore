@@ -98,3 +98,4 @@ ENV/
 # Own stuff
 data/Simulation_ventilation_etudiants.csv
 gen_options.py
+.idea/
