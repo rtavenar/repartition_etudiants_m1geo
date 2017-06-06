@@ -4,30 +4,30 @@ __author__ = 'Romain Tavenard romain.tavenard[at]univ-rennes2.fr'
 
 
 def liste_groupes(td_cible, affectations, horaires, list_td):
-    """Liste les groupes possibles pour un TD donné pour un étudiant sachant ses affectations pour les autres groupes.
+    """Liste les groupes possibles pour un TD donne pour un etudiant sachant ses affectations pour les autres groupes.
 
-    Suppose que les codes des groupes de TD aient pour préfixe le nom du TD (ex : BDD1 pour un TD de BDD).
+    Suppose que les codes des groupes de TD aient pour prefixe le nom du TD (ex : BDD1 pour un TD de BDD).
 
-    Note : la liste des groupes possibles est volontairement mélangée pour ne pas que les premiers TD dans l'ordre
-    lexicographique soient systématiquement choisis.
+    Note : la liste des groupes possibles est volontairement melangee pour ne pas que les premiers TD dans l'ordre
+    lexicographique soient systematiquement choisis.
 
     Parameters
     ----------
     td_cible    str
         Nom du TD pour lequel lister les groupes accessibles
     affectations    dict
-        Dictionnaire contenant les affectations déjà effectuées (les clés du dictionnaire sont les créneaux horaires et
-        les valeurs associées sont les identifiants de groupe).
+        Dictionnaire contenant les affectations deja effectuees (les cles du dictionnaire sont les creneaux horaires et
+        les valeurs associees sont les identifiants de groupe).
     horaires    dict
         Un dictionnaire indiquant les horaires de chaque groupe de TD
     list_td list
-        Une liste des options à choisir par l'étudiant (si `td_cible` n'est pas dans cette liste, la fonction retournera
+        Une liste des options a choisir par l'etudiant (si `td_cible` n'est pas dans cette liste, la fonction retournera
         `[None]`.
 
     Returns
     -------
     list
-        Une liste des groupes de TD accessibles ou la liste contenant le seul élément `None` si l'étudiant n'a pas
+        Une liste des groupes de TD accessibles ou la liste contenant le seul element `None` si l'etudiant n'a pas
         choisi le TD en question.
 
     Examples
@@ -51,10 +51,10 @@ def liste_groupes(td_cible, affectations, horaires, list_td):
 
 
 def affecte(horaires, list_td):
-    """Calcule un ensemble de groupes de TD cohérent (ie sans interférence) pour un étudiant dont les options sont
+    """Calcule un ensemble de groupes de TD coherent (ie sans interference) pour un etudiant dont les options sont
     fournies.
 
-    Suppose (codé en dur) que les 3 TD que l'on peut considérer sont "BDD", "TEL" et "ENT" et que les noms de groupes
+    Suppose (code en dur) que les 3 TD que l'on peut considerer sont "BDD", "TEL" et "ENT" et que les noms de groupes
     de TD commencent par ces trois lettres suivies d'un identifiant (typiquement un chiffre, par exemple ENT3 pour le
     groupe 3 du TD ENT)
 
@@ -63,13 +63,13 @@ def affecte(horaires, list_td):
     horaires    dict
         Un dictionnaire indiquant les horaires de chaque groupe de TD
     list_td    list
-        Une liste de TD choisis par l'étudiant
+        Une liste de TD choisis par l'etudiant
 
     Returns
     -------
     dict
-        Un dictionnaire contenant une proposition d'affectation (les clés du dictionnaire sont les créneaux horaires et
-        les valeurs associées sont les identifiants de groupe).
+        Un dictionnaire contenant une proposition d'affectation (les cles du dictionnaire sont les creneaux horaires et
+        les valeurs associees sont les identifiants de groupe).
 
     Example
     -------
@@ -93,20 +93,20 @@ def affecte(horaires, list_td):
 
 
 def regroupe(etudiants, option):
-    """Génère les listes d'étudiants inscrits dans chaque groupe pour une option donnée.
+    """Genere les listes d'etudiants inscrits dans chaque groupe pour une option donnee.
 
     Parameters
     ----------
     etudiants   dict
-        Un dictionnaire ayant pour clés les numéros d'étudiants et pour valeurs les listes de groupes auxquels ils
+        Un dictionnaire ayant pour cles les numeros d'etudiants et pour valeurs les listes de groupes auxquels ils
         sont inscrits
     option  str
-        Une chaîne de caractère indiquant le cours pour lequel on veut faire des listes d'étudiants
+        Une chaîne de caractere indiquant le cours pour lequel on veut faire des listes d'etudiants
 
     Returns
     -------
     dict
-        Un dictionaire ayant pour clés les identifiants de groupes et pour valeurs les listes de numéro d'étudiants
+        Un dictionaire ayant pour cles les identifiants de groupes et pour valeurs les listes de numero d'etudiants
         inscrits dans les groupes
 
     Examples
@@ -126,16 +126,16 @@ def regroupe(etudiants, option):
 
 
 def dict_argmin(d):
-    """Retourne la paire clé-valeur associée à la plus petite valeur du dictionnaire.
+    """Retourne la paire cle-valeur associee a la plus petite valeur du dictionnaire.
 
     Parameters
     ----------
     d   dict
-        Le dictionnaire à considérer
+        Le dictionnaire a considerer
 
     Returns
     -------
-    La clé correpondant au minimum
+    La cle correpondant au minimum
     La valeur minimale
 
     Examples
@@ -152,16 +152,16 @@ def dict_argmin(d):
 
 
 def dict_argmax(d):
-    """Retourne la paire clé-valeur associée à la plus grande valeur du dictionnaire.
+    """Retourne la paire cle-valeur associee a la plus grande valeur du dictionnaire.
 
     Parameters
     ----------
     d   dict
-        Le dictionnaire à considérer
+        Le dictionnaire a considerer
 
     Returns
     -------
-    La clé correpondant au maximum
+    La cle correpondant au maximum
     La valeur maximale
 
     Examples
@@ -178,21 +178,21 @@ def dict_argmax(d):
 
 
 def equilibrage(etudiants, horaires):
-    """Tente de ré-équilibrer les tailles des groupes de TD.
+    """Tente de re-equilibrer les tailles des groupes de TD.
 
     Parameters
     ----------
     etudiants   dict
-        Une proposition d'affectation possiblement non équilibrée (dictionnaire dont les clés sont les numéros
-        étudiants et les valeurs sont des listes de groupes de TD assignés)
+        Une proposition d'affectation possiblement non equilibree (dictionnaire dont les cles sont les numeros
+        etudiants et les valeurs sont des listes de groupes de TD assignes)
     horaires    dict
         Un dictionnaire indiquant les horaires de chaque groupe de TD
 
     Returns
     -------
     dict
-        Un dictionnaire au même format que `etudiants` mais qui est censé correspondre à une version plus équilibrée en
-        termes de nombre d'étudiants par groupe de TD.
+        Un dictionnaire au meme format que `etudiants` mais qui est cense correspondre a une version plus equilibree en
+        termes de nombre d'etudiants par groupe de TD.
     """
     for option in ["BDD", "TEL", "ENT"]:
         has_moved = True
@@ -211,5 +211,5 @@ def equilibrage(etudiants, horaires):
                         etudiants[numetu] = [gr for gr in list_groupes if gr != argmax_taille] + [argmin_taille]
                         has_moved = True
                         break
-        print("Après équilibrage : %s" % str({k: len(v) for k, v in regroupe(etudiants, option).items()}))
+        print("Apres equilibrage : %s" % str({k: len(v) for k, v in regroupe(etudiants, option).items()}))
     return etudiants
