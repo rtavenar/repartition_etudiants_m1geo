@@ -101,7 +101,7 @@ def regroupe(etudiants, option):
         Un dictionnaire ayant pour cles les numeros d'etudiants et pour valeurs les listes de groupes auxquels ils
         sont inscrits
     option  str
-        Une chaîne de caractere indiquant le cours pour lequel on veut faire des listes d'etudiants
+        Une chaine de caractere indiquant le cours pour lequel on veut faire des listes d'etudiants
 
     Returns
     -------
