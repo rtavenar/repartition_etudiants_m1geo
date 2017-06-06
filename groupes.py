@@ -30,3 +30,4 @@ etudiants_dans_les_groupes = equilibrage(etudiants_dans_les_groupes, horaires)
 fp = open("data/groupes_equilibres.csv", "w")
 for numetu, list_groupes in etudiants_dans_les_groupes.items():
     fp.write(numetu + ";" + ";".join(list_groupes) + "\n")
+fp.close()
